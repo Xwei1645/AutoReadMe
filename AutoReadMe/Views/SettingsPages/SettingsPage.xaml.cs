@@ -1,4 +1,4 @@
-﻿using ClassIsland.Core.Abstractions.Controls;
+using ClassIsland.Core.Abstractions.Controls;
 using ClassIsland.Core.Attributes;
 using MaterialDesignThemes.Wpf;
 
@@ -8,11 +8,11 @@ namespace AutoReadMe.Views.SettingsPages;
 /// ExampleSettingsPage.xaml 的交互逻辑
 /// </summary>
 [SettingsPageInfo("Xwei1645.AutoReadMe", "AutoReadMe", PackIconKind.CogOutline, PackIconKind.Cog)]
-public partial class SettingsPage : SettingsPageBase
+public partial class AutoReadMeSettingsPage : SettingsPageBase
 {
     public Plugin Plugin { get; }
 
-    public SettingsPage(Plugin plugin)
+    public AutoReadMeSettingsPage(Plugin plugin)
     {
         Plugin = plugin;
         InitializeComponent();
