@@ -2,11 +2,14 @@
 # YAML 教程：https://www.runoob.com/w3cnote/yaml-intro.html
 # 插件清单格式：https://docs.classisland.tech/zh-cn/latest/dev/plugins/create-project/#%E6%8F%92%E4%BB%B6%E6%B8%85%E5%8D%95%E6%96%87%E4%BB%B6
 
-id: Xwei.16445AutoReadMe
+id: Xwei1645.AutoReadMe
 name: AutoReadMe
-description: 在新学期ClassIsland启动时提示是否打开README文件。
+description: 在 ClassIsland 启动时通过弹窗方式询问是否需要打开 README 文件阅读相关说明。
 entranceAssembly: "AutoReadMe.dll"
-url: https://AutoReadMe.com
+url: https://github.com/Xwei1645/AutoReadMe
 version: 1.0.0.0
 apiVersion: 1.5.0
 author: Xwei1645
+repoOwner: Xwei1645
+repoName: AutoReadMe
+assetsRoot: master/AutoReadMe

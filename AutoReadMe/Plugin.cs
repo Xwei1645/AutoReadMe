@@ -9,6 +9,7 @@ using System.Windows.Media.Imaging;
 using ClassIsland.Core.Extensions.Registry;
 using AutoReadMe.Models;
 using AutoReadMe.Views.SettingsPages;
+using System;
 
 namespace AutoReadMe
 {
@@ -50,11 +51,13 @@ namespace AutoReadMe
 
             // 显示弹窗
             string mainText = Settings.WelcomeText;
-            var result = CommonDialog.ShowDialog("欢迎", mainText, new BitmapImage(new Uri("", UriKind.Relative)), 60, 60, dialogActions);
+            var result = CommonDialog.ShowDialog("欢迎", mainText, new BitmapImage(new Uri("https://i0.hdslb.com/bfs/garb/88c671c2156928dbc284ea9820c2a8bed317716d.png", UriKind.Relative)), 60, 60, dialogActions);
+            Console.WriteLine("显示 AutoReadMe 弹窗");
+            Console.WriteLine($"弹窗内容: {mainText}");
 
-            Console.WriteLine(result);
+            Console.WriteLine($"用户选择的按钮索引: {result}");
 
-            // 根据用户选择的按钮执行相应操作
+            // 根据用户选择的按钮执行相应操作并输出到控制台
             if (result == 0)
             {
                 OpenReadMe();
@@ -63,8 +66,15 @@ namespace AutoReadMe
             {
                 OpenReadMe();
                 Settings.ShowAgain = false;
+                Console.WriteLine("关闭“每次显示”");
+            }
+            else if (result == 2)
+            {
+                Settings.ShowAgain = false;
+                Console.WriteLine("不打开 README 文件");
             }
 
+            services.AddSingleton(Settings);
             services.AddSettingsPage<SettingsPage>();
         }
 
@@ -79,6 +89,11 @@ namespace AutoReadMe
                     FileName = readMePath,
                     UseShellExecute = true
                 });
+                Console.WriteLine($"打开 README 文件: {readMePath}");
+            }
+            else
+            {
+                Console.WriteLine("README 文件路径为空");
             }
         }
     }
