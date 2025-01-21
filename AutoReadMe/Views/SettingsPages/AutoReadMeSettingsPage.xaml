@@ -7,7 +7,7 @@
       xmlns:ci="http://classisland.tech/schemas/xaml/core"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="AutoReadMeSettingsPage"
+      Title="SettingsPage"
       TextElement.Foreground="{DynamicResource MaterialDesignBody}"
       Background="{DynamicResource MaterialDesignPaper}"
       FontFamily="{StaticResource HarmonyOsSans}"
@@ -15,27 +15,38 @@
       TextElement.FontSize="14"
       TextOptions.TextFormattingMode="Ideal"
       TextOptions.TextRenderingMode="Auto"
-      d:DataContext="{d:DesignInstance local:AutoReadMeSettingsPage}">
+      d:DataContext="{d:DesignInstance local:SettingsPage}">
 
     <ScrollViewer>
         <StackPanel MaxWidth="750">
-            <!-- 示例设置1 -->
-            <ci:SettingsCard IconGlyph="CogOutline"
-                             Header="示例设置1"
-                             Description="设置描述123123123123123"
+            <!-- README 文件路径 -->
+            <ci:SettingsCard IconGlyph="AttachFile"
+                             Header="README 文件路径"
+                             Description="选择单击“打开”时会打开的 README 文件路径，可以是 html, pdf, txt, md 等。"
                              Margin="0 0 0 6">
                 <ci:SettingsCard.Switcher>
-                    <TextBox Text="{Binding Plugin.Settings.Settings1}"
+                    <TextBox Text="{Binding Plugin.Settings.ReadMePath, Mode=TwoWay}"
                              Foreground="{DynamicResource MaterialDesignBody}"
                              Width="150"/>
                 </ci:SettingsCard.Switcher>
             </ci:SettingsCard>
-            <!-- 示例设置2 -->
+            <!-- 每次显示 -->
             <ci:SettingsCard IconGlyph="CogOutline"
-                           Header="示例设置2"
-                           Description="设置描述456456456456456"
-                           IsOn="{Binding Plugin.Settings.Settings2, Mode=TwoWay}"
+                           Header="每次显示"
+                           Description="若启用，将会在 ClassIsland 每次启动时均显示弹窗。"
+                           IsOn="{Binding Plugin.Settings.ShowAgain, Mode=TwoWay}"
                            Margin="0 0 0 6" />
+            <!-- 弹窗文本 -->
+            <ci:SettingsCard IconGlyph="Chat"
+                 Header="弹窗文本"
+                 Description="AutoReadMe 启动时显示的弹窗中的内容。"
+                 Margin="0 0 0 6">
+                <ci:SettingsCard.Switcher>
+                    <TextBox Text="{Binding Plugin.Settings.WelcomeText, Mode=TwoWay}"
+                 Foreground="{DynamicResource MaterialDesignBody}"
+                 Width="150"/>
+                </ci:SettingsCard.Switcher>
+            </ci:SettingsCard>
         </StackPanel>
     </ScrollViewer>
 </ci:SettingsPageBase>

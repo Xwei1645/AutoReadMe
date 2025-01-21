@@ -4,27 +4,39 @@ namespace AutoReadMe.Models;
 
 public class Settings : ObservableRecipient
 {
-    private bool _settings2 = false;
-    private string _settings1 = "foobar";
+    private bool _showAgain = true;
+    private string _welcomeText = "欢迎使用 Awesome WhiteBoard —— 经过魔改后超级好用的电子白板！为了帮助你更好的了解相关软件的使用方法，我们编写了一份详细的说明文档，如果你需要阅读，请单击“打开”或“仅本次打开”；如果不需要，请单击“不打开”。Have an Octotastic day!";
+    private string _readMePath = "";
 
-    public string Settings1
+    public bool ShowAgain
     {
-        get => _settings1;
+        get => _showAgain;
         set
         {
-            if (value == _settings1) return;
-            _settings1 = value;
+            if (value == _showAgain) return;
+            _showAgain = value;
             OnPropertyChanged();
         }
     }
 
-    public bool Settings2
+    public string WelcomeText
     {
-        get => _settings2;
+        get => _welcomeText;
         set
         {
-            if (value == _settings2) return;
-            _settings2 = value;
+            if (value == _welcomeText) return;
+            _welcomeText = value;
+            OnPropertyChanged();
+        }
+    }
+
+    public string ReadMePath
+    {
+        get => _readMePath;
+        set
+        {
+            if (value == _readMePath) return;
+            _readMePath = value;
             OnPropertyChanged();
         }
     }

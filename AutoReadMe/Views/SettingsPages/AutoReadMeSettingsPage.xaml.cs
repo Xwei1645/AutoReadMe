@@ -5,17 +5,13 @@ using MaterialDesignThemes.Wpf;
 namespace AutoReadMe.Views.SettingsPages;
 
 /// <summary>
-/// ExampleSettingsPage.xaml 的交互逻辑
+/// SettingsPage.xaml 的交互逻辑
 /// </summary>
 [SettingsPageInfo("Xwei1645.AutoReadMe", "AutoReadMe", PackIconKind.CogOutline, PackIconKind.Cog)]
-public partial class AutoReadMeSettingsPage : SettingsPageBase
+public partial class SettingsPage : SettingsPageBase
 {
-    public Plugin Plugin { get; }
-
-    public AutoReadMeSettingsPage(Plugin plugin)
+    public SettingsPage()
     {
-        Plugin = plugin;
         InitializeComponent();
-        DataContext = this;
     }
 }

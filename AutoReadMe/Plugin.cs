@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.Windows.Media.Imaging;
 using ClassIsland.Core.Extensions.Registry;
 using AutoReadMe.Models;
+using AutoReadMe.Views.SettingsPages;
 
 namespace AutoReadMe
 {
@@ -48,9 +49,37 @@ namespace AutoReadMe
             };
 
             // 显示弹窗
-            var result = CommonDialog.ShowDialog("欢迎", "消息内容", new BitmapImage(new Uri("", UriKind.Relative)), 60, 60, dialogActions);
+            string mainText = Settings.WelcomeText;
+            var result = CommonDialog.ShowDialog("欢迎", mainText, new BitmapImage(new Uri("", UriKind.Relative)), 60, 60, dialogActions);
 
-            services.AddSettingsPage<AutoReadMeSettingsPage>();
+            Console.WriteLine(result);
+
+            // 根据用户选择的按钮执行相应操作
+            if (result == 0)
+            {
+                OpenReadMe();
+            }
+            else if (result == 1)
+            {
+                OpenReadMe();
+                Settings.ShowAgain = false;
+            }
+
+            services.AddSettingsPage<SettingsPage>();
+        }
+
+        private void OpenReadMe()
+        {
+            // 打开 README 文件的逻辑
+            string readMePath = Settings.ReadMePath;
+            if (!string.IsNullOrEmpty(readMePath))
+            {
+                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+                {
+                    FileName = readMePath,
+                    UseShellExecute = true
+                });
+            }
         }
     }
 }
